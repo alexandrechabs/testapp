@@ -1,11 +1,12 @@
 import { BehaviorSubject } from 'rxjs';
 import getConfig from 'next/config';
 import Router from 'next/router';
+import { getBaseUrl, getApiRoot } from "nextjs-url";
 
 import { fetchWrapper } from 'helpers';
 
-const { publicRuntimeConfig } = getConfig();
-const baseUrl = `${publicRuntimeConfig.apiUrl}/users`;
+// const { publicRuntimeConfig } = getConfig();
+// const baseUrl = `${getApiRoot().href}/users`;
 const userSubject = new BehaviorSubject(process.browser && JSON.parse(localStorage.getItem('user')));
 
 export const userService = {
@@ -21,8 +22,8 @@ export const userService = {
 };
 
 function login(username, password) {
-    console.log(baseUrl)
-    return fetchWrapper.post(`${baseUrl}/authenticate`, { username, password })
+    const baseUrl = getApiRoot().href;
+    return fetchWrapper.post(`${baseUrl}/users/authenticate`, { username, password })
         .then(user => {
             // publish user to subscribers and store in local storage to stay logged in between page refreshes
             userSubject.next(user);
@@ -40,19 +41,23 @@ function logout() {
 }
 
 function register(user) {
-    return fetchWrapper.post(`${baseUrl}/register`, user);
+    const baseUrl = getApiRoot().href;
+    return fetchWrapper.post(`${baseUrl}/users/register`, user);
 }
 
 function getAll() {
-    return fetchWrapper.get(baseUrl);
+    const baseUrl = getApiRoot().href;
+    return fetchWrapper.get(`${baseUrl}/users`);
 }
 
 function getById(id) {
-    return fetchWrapper.get(`${baseUrl}/${id}`);
+    const baseUrl = getApiRoot().href;
+    return fetchWrapper.get(`${baseUrl}/users/${id}`);
 }
 
 function update(id, params) {
-    return fetchWrapper.put(`${baseUrl}/${id}`, params)
+    const baseUrl = getApiRoot().href;
+    return fetchWrapper.put(`${baseUrl}/users/${id}`, params)
         .then(x => {
             // update stored user if the logged in user updated their own record
             if (id === userSubject.value.id) {
@@ -69,5 +74,6 @@ function update(id, params) {
 
 // prefixed with underscored because delete is a reserved word in javascript
 function _delete(id) {
-    return fetchWrapper.delete(`${baseUrl}/${id}`);
+    const baseUrl = getApiRoot().href;
+    return fetchWrapper.delete(`${baseUrl}/users/${id}`);
 }
