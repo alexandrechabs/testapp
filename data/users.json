@@ -1,0 +1,20 @@
+[
+    {
+        "firstName": "a",
+        "lastName": "a",
+        "username": "a@a.fr",
+        "hash": "$2a$10$euT6dCmNfGSMuoi6kvFp6unvG5Y0v79JNSfDTN1qeY.laS5SsyULO",
+        "id": 1,
+        "dateCreated": "2023-01-22T21:36:00.724Z",
+        "dateUpdated": "2023-01-22T21:36:00.724Z"
+    },
+    {
+        "firstName": "a",
+        "lastName": "a",
+        "username": "aa@a.fr",
+        "hash": "$2a$10$fluEoIryYrSounKEhgz8HezlLhqZUQ3cJz5Dtn9qEIcfHrvT8Knji",
+        "id": 2,
+        "dateCreated": "2023-01-22T22:13:20.702Z",
+        "dateUpdated": "2023-01-22T22:13:20.702Z"
+    }
+]
