@@ -11,11 +11,8 @@ export default apiHandler({
 });
 
 function authenticate(req, res) {
-    console.log('plop')
     const { username, password } = req.body;
-    console.log(req.body)
     const user = usersRepo.find(u => u.username === username);
-    console.log("user" +user)
     // validate
     if (!user || !bcrypt.compareSync(password, user.hash)) {
         throw 'Username or password is incorrect';

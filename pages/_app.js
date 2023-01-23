@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }) {
   const showHeader = router.pathname === '/login' ? false : true;
   const [user, setUser] = useState(null);
   const [authorized, setAuthorized] = useState(false);
+  console.log(router.pathname)
   useEffect(() => {
     // on initial load - run auth check 
     authCheck(router.asPath);
