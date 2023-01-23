@@ -1,7 +1,7 @@
 [
     {
-        "firstName": "a",
-        "lastName": "a",
+        "firstName": "Alexandre",
+        "lastName": "Chabane",
         "username": "a@a.fr",
         "hash": "$2a$10$euT6dCmNfGSMuoi6kvFp6unvG5Y0v79JNSfDTN1qeY.laS5SsyULO",
         "id": 1,
@@ -9,8 +9,8 @@
         "dateUpdated": "2023-01-22T21:36:00.724Z"
     },
     {
-        "firstName": "a",
-        "lastName": "a",
+        "firstName": "Alexandre",
+        "lastName": "Chabane",
         "username": "aa@a.fr",
         "hash": "$2a$10$fluEoIryYrSounKEhgz8HezlLhqZUQ3cJz5Dtn9qEIcfHrvT8Knji",
         "id": 2,

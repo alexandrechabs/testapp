@@ -4,7 +4,8 @@ import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { userService } from "@/services";
-import { Link } from "@/components/Link";
+import Link from 'next/link';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const router = useRouter();
@@ -20,10 +21,8 @@ const Login = () => {
     const { errors } = formState;
 
     function onSubmit({ email, password }) {
+      toast.success('Connexion réussie');
         clearErrors('apiError')
-        console.log('a')
-        console.log(email)
-        console.log(password)
         return userService.login(email, password)
             .then(() => {
                 // get return url from query parameters or default to '/'

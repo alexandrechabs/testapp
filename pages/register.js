@@ -2,9 +2,8 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-
+import Link from 'next/link';
 import { userService } from 'services';
-import { Link } from '@/components/Link';
 
 export default Register;
 

@@ -1,9 +1,10 @@
 import Navbar from "../components/Navbar";
 import "../styles/globals.css";
 import 'tailwindcss/tailwind.css'
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { userService } from 'services';
+import { userService } from "@/services";
+import { Toaster } from 'react-hot-toast';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -48,8 +49,14 @@ function MyApp({ Component, pageProps }) {
 }
   return (
     <>
+    <React.Fragment>
       { showHeader && <Navbar />}
       <Component {...pageProps} />
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+      />
+      </React.Fragment>
     </>
   );
 }

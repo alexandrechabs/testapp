@@ -1,22 +1,16 @@
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import {
-  ArrowPathIcon,
   Bars3Icon,
-  BookmarkSquareIcon,
-  CalendarIcon,
   ChartBarIcon,
-  CursorArrowRaysIcon,
   LifebuoyIcon,
   PhoneIcon,
   PlayIcon,
-  ShieldCheckIcon,
-  Squares2X2Icon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { userService } from "@/services";
-import { Link } from './Link';
+import Link from 'next/link';
 
 const solutions = [
   {
@@ -48,7 +42,7 @@ function classNames(...classes) {
 
 function logout() {
   console.log('logout')
-  return userService.logout();
+  return userService.logout()
 }
 
 export default function Example() {

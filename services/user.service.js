@@ -4,6 +4,7 @@ import Router from 'next/router';
 import { getBaseUrl, getApiRoot } from "nextjs-url";
 
 import { fetchWrapper } from 'helpers';
+import { toast } from 'react-hot-toast';
 
 // const { publicRuntimeConfig } = getConfig();
 // const baseUrl = `${getApiRoot().href}/users`;
@@ -31,12 +32,13 @@ function login(username, password) {
 
             return user;
         });
-}
+} 
 
 function logout() {
     // remove user from local storage, publish null to user subscribers and redirect to login page
     localStorage.removeItem('user');
     userSubject.next(null);
+    toast.success('Déconnexion réussie');
     Router.push('/login');
 }
 
