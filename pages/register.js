@@ -139,7 +139,7 @@ function Register() {
                 <label
                   onClick={() => setShowPassword(!showPassword)}
                   className="bg-gray-300 hover:bg-gray-400 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer "
-                  for="toggle"
+                  htmlFor="toggle"
                 >
                   {showPassword ? "hide" : "show"}
                 </label>

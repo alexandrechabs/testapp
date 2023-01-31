@@ -15,7 +15,10 @@ const Table = () => {
           <thead className="text-white">
             {users.map((listValue, index) => {
               return (
-                <tr className="bg-welmo-blue flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0 [&:not(:first-child)]:sm:hidden">
+                <tr
+                  key={index}
+                  className="bg-welmo-blue flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0 [&:not(:first-child)]:sm:hidden"
+                >
                   <th className="p-3 text-left">Name</th>
                   <th className="p-3 text-left">Email</th>
                   <th className="p-3 text-left" width="110px">
@@ -28,7 +31,10 @@ const Table = () => {
           <tbody className="flex-1 sm:flex-none">
             {users.map((listValue, index) => {
               return (
-                <tr className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 hover:bg-gray-100">
+                <tr
+                  key={index}
+                  className="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0 hover:bg-gray-100"
+                >
                   <td className="border-grey-light border p-3">
                     {listValue.firstName} {listValue.lastName}
                   </td>
