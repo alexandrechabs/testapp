@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
-import { Graph } from "@/components/Graph";
+import Graph from "@/components/Graph";
 
 const About = () => {
   const data = {
