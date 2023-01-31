@@ -64,21 +64,21 @@ export default function Navbar({ color }) {
          w-[200px]
          flex-col bg-white drop-shadow-lg"
             >
-              <a
+              <Link
                 className="px-5 py-3 hover:bg-gray-200 hover:rounded-t"
                 href="/graph"
               >
                 graph
-              </a>
-              <a className="px-5 py-3 hover:bg-gray-200" href="#">
+              </Link>
+              <Link className="px-5 py-3 hover:bg-gray-200" href="#">
                 Contact Us
-              </a>
-              <a
+              </Link>
+              <Link
                 className="px-5 py-3 hover:bg-gray-200 hover:rounded-b"
                 href="#"
               >
                 Privacy Policy
-              </a>
+              </Link>
             </div>
           </div>
 
