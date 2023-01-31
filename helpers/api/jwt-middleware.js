@@ -7,6 +7,7 @@ const { serverRuntimeConfig } = getConfig();
 export { jwtMiddleware };
 
 function jwtMiddleware(req, res) {
+    console.log('azertyuiop')
     const middleware = expressJwt({ secret: serverRuntimeConfig.secret, algorithms: ['HS256'] }).unless({
         path: [
             // public routes that don't require authentication
@@ -14,6 +15,8 @@ function jwtMiddleware(req, res) {
             '/api/users/authenticate'
         ]
     });
+    console.log('middleware')
+    console.log(middleware)
 
     return util.promisify(middleware)(req, res);
 }
