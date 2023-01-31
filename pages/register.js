@@ -153,13 +153,13 @@ function Register() {
                   className="input block border border-gray-300 focus:border-pitch-black  py-3 px-3 w-full focus:outline-none "
                   type="password"
                   // onChange={handlePasswordChange("password")}
-                  value={passValue.password}
+                  // value={passValue.password}
                 />
                 <div
                   className="icon_button absolute right-4 top-14"
                   onClick={handleClickShowPassword}
                 >
-                  {passValue.showPassword ? "a" : "b"}
+                  {/* {passValue.showPassword ? "a" : "b"} */}
                 </div>
               </div>
             </div>
