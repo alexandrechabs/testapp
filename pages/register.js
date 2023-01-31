@@ -157,7 +157,7 @@ function Register() {
                 />
                 <div
                   className="icon_button absolute right-4 top-14"
-                  onClick={handleClickShowPassword}
+                  // onClick={handleClickShowPassword}
                 >
                   {/* {passValue.showPassword ? "a" : "b"} */}
                 </div>
