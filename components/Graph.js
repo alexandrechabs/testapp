@@ -40,4 +40,4 @@ function Graph({ data, height }) {
   );
 }
 
-export { Graph };
+export default Graph;
