@@ -152,7 +152,7 @@ function Register() {
                 <input
                   className="input block border border-gray-300 focus:border-pitch-black  py-3 px-3 w-full focus:outline-none "
                   type="password"
-                  onChange={handlePasswordChange("password")}
+                  // onChange={handlePasswordChange("password")}
                   value={passValue.password}
                 />
                 <div
