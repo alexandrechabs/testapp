@@ -16,7 +16,7 @@ function Register() {
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required("Prénom requis"),
     lastName: Yup.string().required("Nom requis"),
-    email: Yup.string().required("Email requis"),
+    username: Yup.string().required("Email requis"),
     password: Yup.string()
       .min(8, "Le mot de passe doit contenir 8 caractères")
       .matches(/[a-z]/, "Le mot de passe doit contenir au moins 1 minuscule")
@@ -104,22 +104,24 @@ function Register() {
                 <div className="ml-4 text-red-600">{errors.email?.message}</div>
               </div>
               <div className="my-5">
-                <label htmlFor="email" className="sr-only">
+                <label htmlFor="username" className="sr-only">
                   Email address
                 </label>
                 <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  {...register("email")}
+                  id="username"
+                  name="username"
+                  type="username"
+                  {...register("username")}
                   autoComplete="email"
                   required
                   className={`relative block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-welmo-blue focus:outline-none focus:ring-welmo-blue sm:text-sm form-control ${
-                    errors.email ? "border-red-600" : ""
+                    errors.username ? "border-red-600" : ""
                   }`}
                   placeholder="Adresse email"
                 />
-                <div className="ml-4 text-red-600">{errors.email?.message}</div>
+                <div className="ml-4 text-red-600">
+                  {errors.username?.message}
+                </div>
               </div>
               <div className="my-5">
                 <label htmlFor="password" className="sr-only">

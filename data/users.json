@@ -317,11 +317,21 @@
     {
         "firstName": "Alexandre",
         "lastName": "Chabane",
-        "email": "alexandrechabane72@gmail.com",
+        "username": "alexandrechabane72@gmail.com",
         "confirmPassword": "Azazaz1@",
         "hash": "$2a$10$Ta6Pm1bBtEslZwjCQAgJauTSs3KYz1tSgvfi.of1Z8PKAfyYg4NAS",
         "id": 3,
         "dateCreated": "2023-02-05T14:56:34.314Z",
         "dateUpdated": "2023-02-05T14:56:34.314Z"
+    },
+    {
+        "firstName": "plop",
+        "lastName": "plop",
+        "username": "plop@plop.fr",
+        "confirmPassword": "Test1@az",
+        "hash": "$2a$10$W2sR7eN1d953hI5gsuqdFeplrEX30WerbkUW7YzwAd2vyivHZJl.G",
+        "id": 4,
+        "dateCreated": "2023-02-05T19:46:10.265Z",
+        "dateUpdated": "2023-02-05T19:46:10.265Z"
     }
 ]
