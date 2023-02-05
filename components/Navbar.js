@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import { TbChevronDown, TbHelp, TbChartBar, TbMenu2 } from "react-icons/tb";
+import { MdOutlineMenu } from "react-icons/md";
 import { ImCross } from "react-icons/im";
 import { userService } from "@/services";
 import Link from "next/link";
@@ -11,12 +11,11 @@ const solutions = [
     description:
       "Get a better understanding of where your traffic is coming from.",
     href: "/contact",
-    icon: TbChartBar,
   },
 ];
 const callsToAction = [
-  { name: "Watch Demo", href: "/contact", icon: TbChartBar },
-  { name: "Contact Sales", href: "/contact", icon: TbChartBar },
+  { name: "Watch Demo", href: "/contact" },
+  { name: "Contact Sales", href: "/contact" },
 ];
 const resources = [
   {
@@ -24,23 +23,24 @@ const resources = [
     description:
       "Get all of your questions answered in our forums or contact support.",
     href: "/contact",
-    icon: TbHelp,
   },
 ];
 const recentPosts = [
   { id: 1, name: "Boost your conversion rate", href: "/contact" },
 ];
 
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
 function logout() {
   console.log("logout");
   return userService.logout();
 }
 
-export default function Navbar({ color }) {
+export default function Nav({ color }) {
   return (
-    <Popover
-      className={`relative bg-gradient-to-b ${color} to-transparent bg-blur-sm`}
-    >
+    <Popover className={`relative bg-gradient-to-b ${color}`}>
       <div className="mx-auto px-6">
         <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
@@ -53,40 +53,46 @@ export default function Navbar({ color }) {
               />
             </Link>
           </div>
-
-          <div>
-            <button className="peer text-base opacity-100 font-medium text-gray-700 hover:text-gray-900">
-              Dropdown
-            </button>
-
-            <div className="flex rounded transition-opacity duration-500 ease-out opacity-0 hover:opacity-100 peer-hover:opacity-100 absolute w-[200px] z-10 flex-col bg-white">
-              <Link
-                className="px-5 py-3 hover:bg-gray-100 hover:rounded-t"
-                href="/graph"
-              >
-                Graph
-              </Link>
-              <Link
-                className="px-5 py-3 hover:bg-gray-100 hover:rounded-b"
-                href="/table"
-              >
-                Table
-              </Link>
-            </div>
+          <div className="-my-2 -mr-2 md:hidden">
+            <Popover.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400">
+              <span className="sr-only">Open menu</span>
+              <MdOutlineMenu size={25} />
+            </Popover.Button>
           </div>
+          <Popover.Group as="nav" className="hidden space-x-10 md:flex">
+            <div className="dropdown">
+              <button className="dropbtn text-base font-medium text-gray-500 hover:text-gray-900">
+                Dropdown
+              </button>
+              <div className="dropdown-content hidden absolute rounded">
+                <Link
+                  className="px-5 py-3 hover:bg-gray-200 hover:rounded-t"
+                  href="/graph"
+                >
+                  Graph
+                </Link>
+                <Link
+                  className="px-5 py-3 hover:bg-gray-200 hover:rounded-b"
+                  href="/table"
+                >
+                  Table
+                </Link>
+              </div>
+            </div>
 
-          <Link
-            href="/contact"
-            className="text-base font-medium text-gray-700 hover:text-gray-900"
-          >
-            Contact
-          </Link>
-          <Link
-            href="/about"
-            className="text-base font-medium text-gray-700 hover:text-gray-900"
-          >
-            About
-          </Link>
+            <Link
+              href="/contact"
+              className="text-base font-medium text-gray-500 hover:text-gray-900"
+            >
+              Contact
+            </Link>
+            <Link
+              href="/about"
+              className="text-base font-medium text-gray-500 hover:text-gray-900"
+            >
+              About
+            </Link>
+          </Popover.Group>
           <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
             <button
               onClick={logout}
@@ -97,7 +103,6 @@ export default function Navbar({ color }) {
           </div>
         </div>
       </div>
-
       <Transition
         as={Fragment}
         enter="duration-200 ease-out"
@@ -109,9 +114,9 @@ export default function Navbar({ color }) {
       >
         <Popover.Panel
           focus
-          className="absolute z-10 inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden"
+          className="absolute inset-x-0 top-0 origin-top-right transform p-2 transition md:hidden"
         >
-          <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 backdrop-blur-sm bg-translucid-700">
+          <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
             <div className="px-5 pt-5 pb-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -122,56 +127,39 @@ export default function Navbar({ color }) {
                   />
                 </div>
                 <div className="-mr-2">
-                  <Popover.Button className="inline-flex items-center justify-center rounded-md bg-trarant p-2 text-gray-400 hover:translucid-700 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-welmo-blue">
+                  <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                     <span className="sr-only">Close menu</span>
-                    <ImCross className="h-6 w-6" aria-hidden="true" />
+                    <ImCross />
                   </Popover.Button>
                 </div>
               </div>
-              <div className="mt-6">
-                <nav className="grid gap-y-8">
-                  {solutions.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50"
-                    >
-                      <item.icon
-                        className="h-6 w-6 flex-shrink-0 text-indigo-600"
-                        aria-hidden="true"
-                      />
-                      <span className="ml-3 text-base font-medium text-gray-900">
-                        {item.name}
-                      </span>
-                    </Link>
-                  ))}
-                </nav>
-              </div>
             </div>
             <div className="space-y-6 py-6 px-5">
-              <div className="grid grid-cols-2 gap-y-4 gap-x-8">
+              <div className="grid grid-cols-1 gap-y-4 gap-x-8">
+                <Link
+                  href="/graph"
+                  className="text-base font-medium text-gray-900 hover:text-gray-700"
+                >
+                  Graph
+                </Link>
+                <Link
+                  href="/table"
+                  className="text-base font-medium text-gray-900 hover:text-gray-700"
+                >
+                  Table
+                </Link>
                 <Link
                   href="/contact"
                   className="text-base font-medium text-gray-900 hover:text-gray-700"
                 >
                   Contact
                 </Link>
-
                 <Link
                   href="/about"
                   className="text-base font-medium text-gray-900 hover:text-gray-700"
                 >
                   About
                 </Link>
-                {resources.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
               </div>
               <div>
                 <button

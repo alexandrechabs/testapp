@@ -5,7 +5,7 @@ const TablePage = (props) => {
   return (
     <>
       <div className="bg-red-300 min-h-screen">
-        <Navbar color="from-blue-500" />
+        <Navbar color="from-blue-400" />
         <Table />
       </div>
     </>

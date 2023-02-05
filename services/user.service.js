@@ -46,7 +46,14 @@ function logout() {
 }
 
 function register(user) {
-  return fetchWrapper.post(`${baseUrl}/register`, user);
+  console.log(user);
+  return fetchWrapper.post(`${baseUrl}/register`, user).then((user) => {
+    // publish user to subscribers and store in local storage to stay logged in between page refreshes
+    userSubject.next(user);
+    localStorage.setItem("user", JSON.stringify(user));
+
+    return user;
+  });
 }
 
 function getAll() {

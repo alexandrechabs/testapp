@@ -23,11 +23,11 @@ const Login = () => {
   const { errors } = formState;
 
   function onSubmit({ email, password }) {
-    toast.success("Connexion réussie");
     clearErrors("apiError");
     return userService
       .login(email, password)
       .then(() => {
+        toast.success("Connexion réussie");
         // get return url from query parameters or default to '/'
         const returnUrl = router.query.returnUrl || "/";
         router.push(returnUrl);

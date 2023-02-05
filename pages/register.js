@@ -1,14 +1,13 @@
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import * as Yup from "yup";
-import YupPassword from "yup-password";
 import Link from "next/link";
 import { userService } from "services";
 import { useState } from "react";
 import Image from "next/image";
-YupPassword(Yup); // extend yup
-export default Register;
+import toast from "react-hot-toast";
 
 function Register() {
   const router = useRouter();
@@ -17,37 +16,36 @@ function Register() {
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required("Prénom requis"),
     lastName: Yup.string().required("Nom requis"),
-    username: Yup.string().required("Email requis"),
+    email: Yup.string().required("Email requis"),
     password: Yup.string()
-      .required("Mot de passe requis")
       .min(8, "Le mot de passe doit contenir 8 caractères")
-      .minLowercase(1, "Le mot de passe doit contenir au moins 1 minuscule")
-      .minUppercase(1, "Le mot de passe doit contenir au moins 1 majuscule")
-      .minNumbers(1, "Le mot de passe doit contenir au moins 1 chiffre")
-      .minSymbols(
-        1,
-        "Le mot de passe doit contenir au moins 1 caractère spécial"
-      ),
+      .matches(/[a-z]/, "Le mot de passe doit contenir au moins 1 minuscule")
+      .matches(/[A-Z]/, "Le mot de passe doit contenir au moins 1 majuscule")
+      .matches(/[0-9]/, "Le mot de passe doit contenir au moins 1 chiffre"),
+    confirmPassword: Yup.string().oneOf(
+      [Yup.ref("password"), null],
+      "Le mot de passe doit être identique"
+    ),
   });
   const formOptions = { resolver: yupResolver(validationSchema) };
-
   // get functions to build form with useForm() hook
-  const { register, handleSubmit, formState } = useForm(formOptions);
+  const { register, handleSubmit, setError, clearErrors, formState } =
+    useForm(formOptions);
   const { errors } = formState;
   const [showPassword, setShowPassword] = useState(false);
+  const [showPassword2, setShowPassword2] = useState(false);
 
   function onSubmit(user) {
     console.log(user);
-    // return userService
-    //   .register(user)
-    //   .then(() => {
-    //     console.log("Registration successful");
-    //     router.push("login");
-    //   })
-
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    return userService
+      .register(user)
+      .then(() => {
+        toast.success("Compte créé avec succès");
+        router.push("/");
+      })
+      .catch((error) => {
+        setError("apiError", { message: error.message || error });
+      });
   }
 
   return (
@@ -125,50 +123,65 @@ function Register() {
               </div>
               <div className="my-5">
                 <label htmlFor="password" className="sr-only">
-                  Password
+                  Mot de passe
                 </label>
-                <input
-                  id="password"
-                  name="password"
-                  {...register("password")}
-                  autoComplete="current-password"
-                  required
-                  className={`relative block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-welmo-blue focus:outline-none sm:text-sm form-control ${
-                    errors.password ? "border-red-600" : ""
-                  }`}
-                  placeholder="Mot de passe"
-                  type={showPassword ? "text" : "password"}
-                />
-                <label
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="bg-gray-300 hover:bg-gray-400 rounded px-2 py-1 text-sm text-gray-600 font-mono cursor-pointer "
-                  htmlFor="toggle"
-                >
-                  {showPassword ? "hide" : "show"}
-                </label>
+                <div className="relative">
+                  <input
+                    id="password"
+                    name="password"
+                    {...register("password")}
+                    required
+                    className={`relative block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-welmo-blue focus:outline-none sm:text-sm form-control ${
+                      errors.password ? "border-red-600" : ""
+                    }`}
+                    placeholder="Mot de passe"
+                    type={showPassword ? "text" : "password"}
+                  />
+                  <label
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="bg-gray-200 hover:bg-gray-300 rounded px-2 flex text-sm text-gray-600 font-mono cursor-pointer absolute right-2 top-[15%] h-[70%] z-10 items-center"
+                    htmlFor="toggle"
+                  >
+                    {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                  </label>
+                </div>
                 <div className="ml-4 text-red-600">
                   {errors.password?.message}
                 </div>
               </div>
-
-              <div className="eye_div">
-                <input
-                  className="input block border border-gray-300 focus:border-pitch-black  py-3 px-3 w-full focus:outline-none "
-                  type="password"
-                  // onChange={handlePasswordChange("password")}
-                  // value={passValue.password}
-                />
-                <div
-                  className="icon_button absolute right-4 top-14"
-                  // onClick={handleClickShowPassword}
-                >
-                  {/* {passValue.showPassword ? "a" : "b"} */}
+              <div className="my-5">
+                <label htmlFor="confirmPassword" className="sr-only">
+                  Confirmation du mot de passe
+                </label>
+                <div className="relative">
+                  <input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    {...register("confirmPassword")}
+                    required
+                    className={`relative block w-full appearance-none rounded border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-welmo-blue focus:outline-none sm:text-sm form-control ${
+                      errors.password ? "border-red-600" : ""
+                    }`}
+                    placeholder="Confirmer le mot de passe"
+                    type={showPassword2 ? "text" : "password"}
+                  />
+                  <label
+                    onClick={() => setShowPassword2(!showPassword2)}
+                    className="bg-gray-200 hover:bg-gray-300 rounded px-2 flex text-sm text-gray-600 font-mono cursor-pointer absolute right-2 top-[15%] h-[70%] z-10 items-center"
+                    htmlFor="toggle"
+                  >
+                    {showPassword2 ? <AiFillEyeInvisible /> : <AiFillEye />}
+                  </label>
+                </div>
+                <div className="ml-4 text-red-600">
+                  {errors.confirmPassword?.message}
                 </div>
               </div>
             </div>
 
             <div>
               <button
+                type="submit"
                 disabled={formState.isSubmitting}
                 className="group relative flex w-full justify-center rounded-md items-center border border-transparent bg-welmo-blue py-2 px-4 text-xl font-medium text-white hover:bg-welmo-blue-hover focus:outline-none disabled:opacity-50"
               >
@@ -194,7 +207,7 @@ function Register() {
                     ></path>
                   </svg>
                 )}
-                Connexion
+                Créer votre compte
               </button>
               {errors.apiError && (
                 <div className="ml-4 text-red-600">
@@ -208,3 +221,5 @@ function Register() {
     </>
   );
 }
+
+export default Register;
