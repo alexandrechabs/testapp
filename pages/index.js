@@ -3,10 +3,10 @@ import Navbar from "@/components/Navbar";
 const Home = (props) => {
   return (
     <>
-      <div classname="isolate bg-white">
-        <div classname="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
+      <div className="isolate bg-white">
+        <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
           <svg
-            classname="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]"
+            className="relative left-[calc(50%-11rem)] -z-10 h-[21.1875rem] max-w-none -translate-x-1/2 rotate-[30deg] sm:left-[calc(50%-30rem)] sm:h-[42.375rem]"
             viewBox="0 0 1155 678"
             xmlns="http://www.w3.org/2000/svg"
           >
@@ -31,75 +31,75 @@ const Home = (props) => {
           </svg>
         </div>
         <Navbar />
-        <section classname="text-gray-600 body-font">
-          <div classname="container px-5 py-24 mx-auto">
-            <div classname="flex flex-wrap -m-4 text-center">
-              <div classname="p-4 sm:w-1/4 w-1/2">
-                <h2 classname="title-font font-medium sm:text-4xl text-3xl text-gray-900">
+        <section className="text-gray-600 body-font">
+          <div className="container px-5 py-24 mx-auto">
+            <div className="flex flex-wrap -m-4 text-center">
+              <div className="p-4 sm:w-1/4 w-1/2">
+                <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
                   2.7K
                 </h2>
-                <p classname="leading-relaxed">Users</p>
+                <p className="leading-relaxed">Users</p>
               </div>
-              <div classname="p-4 sm:w-1/4 w-1/2">
-                <h2 classname="title-font font-medium sm:text-4xl text-3xl text-gray-900">
+              <div className="p-4 sm:w-1/4 w-1/2">
+                <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
                   1.8K
                 </h2>
-                <p classname="leading-relaxed">Subscribes</p>
+                <p className="leading-relaxed">Subscribes</p>
               </div>
-              <div classname="p-4 sm:w-1/4 w-1/2">
-                <h2 classname="title-font font-medium sm:text-4xl text-3xl text-gray-900">
+              <div className="p-4 sm:w-1/4 w-1/2">
+                <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
                   35
                 </h2>
-                <p classname="leading-relaxed">Downloads</p>
+                <p className="leading-relaxed">Downloads</p>
               </div>
-              <div classname="p-4 sm:w-1/4 w-1/2">
-                <h2 classname="title-font font-medium sm:text-4xl text-3xl text-gray-900">
+              <div className="p-4 sm:w-1/4 w-1/2">
+                <h2 className="title-font font-medium sm:text-4xl text-3xl text-gray-900">
                   4
                 </h2>
-                <p classname="leading-relaxed">Products</p>
+                <p className="leading-relaxed">Products</p>
               </div>
             </div>
           </div>
         </section>
-        <div classname="relative px-6 lg:px-8">
-          <div classname="mx-auto max-w-2xl py-16 sm:py-24 lg:py-28">
-            <div classname="hidden sm:mb-8 sm:flex sm:justify-center">
-              <div classname="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+        <div className="relative px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:py-28">
+            <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+              <div className="relative rounded-full py-1 px-3 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                 Announcing our next round of funding.{" "}
-                <a href="#" classname="font-semibold text-indigo-600">
-                  <span classname="absolute inset-0" aria-hidden="true"></span>
+                <a href="#" className="font-semibold text-indigo-600">
+                  <span className="absolute inset-0" aria-hidden="true"></span>
                   Read more <span aria-hidden="true">&rarr;</span>
                 </a>
               </div>
             </div>
-            <div classname="text-center">
-              <h1 classname="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <div className="text-center">
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                 Data to enrich your online business
               </h1>
-              <p classname="mt-6 text-lg leading-8 text-gray-600">
+              <p className="mt-6 text-lg leading-8 text-gray-600">
                 Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
                 lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
                 fugiat aliqua.
               </p>
-              <div classname="mt-10 flex items-center justify-center gap-x-6">
+              <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a
                   href="#"
-                  classname="rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Get started
                 </a>
                 <a
                   href="#"
-                  classname="text-base font-semibold leading-7 text-gray-900"
+                  className="text-base font-semibold leading-7 text-gray-900"
                 >
                   Learn more <span aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
           </div>
-          <div classname="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-40rem)]">
+          <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-40rem)]">
             <svg
-              classname="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
+              className="relative left-[calc(50%+3rem)] h-[21.1875rem] max-w-none -translate-x-1/2 sm:left-[calc(50%+36rem)] sm:h-[42.375rem]"
               viewBox="0 0 1155 678"
               xmlns="http://www.w3.org/2000/svg"
             >
