@@ -59,25 +59,18 @@ export default function Navbar({ color }) {
               Dropdown
             </button>
 
-            <div
-              className="hidden rounded transition-opacity duration-1000 ease-out opacity-0 hover:opacity-100 peer-hover:opacity-100 absolute peer-hover:flex hover:flex
-         w-[200px]
-         flex-col bg-white drop-shadow-lg"
-            >
+            <div className="flex rounded transition-opacity duration-500 ease-out opacity-0 hover:opacity-100 peer-hover:opacity-100 absolute w-[200px] z-10 flex-col bg-white">
               <Link
-                className="px-5 py-3 hover:bg-gray-200 hover:rounded-t"
+                className="px-5 py-3 hover:bg-gray-100 hover:rounded-t"
                 href="/graph"
               >
-                graph
-              </Link>
-              <Link className="px-5 py-3 hover:bg-gray-200" href="#">
-                Contact Us
+                Graph
               </Link>
               <Link
-                className="px-5 py-3 hover:bg-gray-200 hover:rounded-b"
-                href="#"
+                className="px-5 py-3 hover:bg-gray-100 hover:rounded-b"
+                href="/table"
               >
-                Privacy Policy
+                Table
               </Link>
             </div>
           </div>

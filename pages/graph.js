@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import Graph from "@/components/Graph";
 
-const About = () => {
+const GraphPage = () => {
   const data = {
     name: "Welmo",
     children: [
@@ -532,15 +532,14 @@ const About = () => {
   };
 
   let nb = (JSON.stringify(data).match(/name/g) || []).length;
-
   return (
     <>
       <Navbar />
-      <div className="center">
+      <div className="center ml-0.5">
         <Graph data={data} height={nb * 24.5} />
       </div>
     </>
   );
 };
 
-export default About;
+export default GraphPage;
